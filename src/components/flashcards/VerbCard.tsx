@@ -1,33 +1,28 @@
-import React, { FC } from 'react';
+import React from 'react';
+import Verb from '../../models/Verb';
 import Conjugations from '../../models/Conjugations'
 
 interface IVerbCardProps {
-    infinitive: string;
-    translation: string;
-    pronunciation: string;
-    tense: string;
+    verb: Verb;
     conjugations: Conjugations;
 }
 
 const VerbCard = (
     (props: IVerbCardProps) => {
         const {
-            infinitive, 
-            translation, 
-            pronunciation, 
-            tense,
+            verb,
             conjugations 
         } = props;
     
         return (
             <>
                 <section>
-                    <h3>{ infinitive }</h3>
-                    <div>{ translation }</div>
-                    <div>{ pronunciation }</div>
+                    <h3>{ verb.infinitive }</h3>
+                    <div>{ verb.translation }</div>
+                    <div>{ verb.pronunciation }</div>
                 </section>
                 <section>
-                    <h3>{ tense } tense</h3>
+                    <h3>{ conjugations.tense } tense</h3>
                     <dl>
                         <dt>Yo: </dt>
                         <dd>{ conjugations.getYo() }</dd>
