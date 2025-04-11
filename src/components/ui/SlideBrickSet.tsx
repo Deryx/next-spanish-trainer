@@ -6,12 +6,9 @@ interface SlideBrickSetProps {
     brickSetColor: string;
 }
 
-
 const SlideBrickSet = ({ brickSetText, brickSetColor }: SlideBrickSetProps) => {
     return (
-        brickSetText.map((text, index) => {
-            <SlideBrick key={`${text}-${index}`} brickColor={brickSetColor} text={text} />
-        })
+        brickSetText.map((text, index) => <SlideBrick key={`${text}-${index}`} brickColor={brickSetColor} text={text} />)
     )
 }
 
