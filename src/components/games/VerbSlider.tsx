@@ -7,17 +7,18 @@ interface VerbSliderProps {
 }
 
 const VerbSlider = ({ conjugations }: VerbSliderProps) => {
-    const pronouns = ['yo', 'tu', 'el', 'nosotros', 'vosotros', 'ellos'];
+    const brickPronouns: string[] = ['yo', 'tu', 'el', 'nosotros', 'vosotros', 'ellos'];
+    const brickConjugations: string[] = [];
     const pronounBricksColor = '';
     const conjugationsBricksColor = '';
 
     return (
         <>
             <div>
-                { pronouns.map( (pronoun) => <SlideBrickSet key={`brickset-${pronoun}`} brickSetColor={pronounBricksColor} brickSetText={pronoun} /> ) }
+                { brickPronouns.map( (pronoun) => <SlideBrickSet key={`brickSet-${pronoun}`} brickSetColor={pronounBricksColor} brickSetText={pronoun} /> ) }
             </div>
             <div>
-
+                { brickConjugations.map( (conjugation) => <SlideBrickSet key={`brickSet-${conjugation}`} brickSetColor={conjugationsBricksColor} brickSetText={conjugation} /> ) }
             </div>
         </>
     )
