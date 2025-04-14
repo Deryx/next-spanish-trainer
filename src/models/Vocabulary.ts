@@ -1,4 +1,4 @@
-class Word {
+class Vocabulary {
     word: string;
     translation: string;
     pronunciation: string;
@@ -40,4 +40,4 @@ class Word {
     }
 }
 
-export default Word;
+export default Vocabulary;

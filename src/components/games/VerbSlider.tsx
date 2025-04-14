@@ -8,35 +8,30 @@ interface VerbSliderProps {
     conjugationsBricksColor?: string;
 }
 
-const PRONOUNS = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'] as const;
-
 const VerbSlider = ({ 
     conjugations, 
     pronounBricksColor = "#defaultColor",  // Default green for pronouns
     conjugationsBricksColor = "#defaultColor"  // Default blue for conjugations
 }: VerbSliderProps) => {
+    const PRONOUNS: string[] = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'];
+    const CONJUGATIONS: string[] = [conjugations.getYo(), conjugations.getEl(), conjugations.getEl(), conjugations.getNosotros(), conjugations.getVosotros(), conjugations.getEllos()]
+
     return (
         <div className="verb-slider-container">
             {/* Pronouns Row */}
             <div className="pronouns-row">
-                {PRONOUNS.map((pronoun) => (
-                    <SlideBrickSet 
-                        key={`pronoun-${pronoun}`} 
-                        brickSetColor={pronounBricksColor} 
-                        brickSetText={pronoun} 
-                    />
-                ))}
+                <SlideBrickSet 
+                    brickSetColor={pronounBricksColor} 
+                    brickSetText={PRONOUNS} 
+                />
             </div>
 
             {/* Conjugations Row */}
             <div className="conjugations-row">
-                {Object.values(conjugations).map((conjugation, index) => (
-                    <SlideBrickSet 
-                        key={`conjugation-${PRONOUNS[index]}`} 
-                        brickSetColor={conjugationsBricksColor} 
-                        brickSetText={conjugation} 
-                    />
-                ))}
+                <SlideBrickSet 
+                    brickSetColor={conjugationsBricksColor} 
+                    brickSetText={CONJUGATIONS} 
+                />
             </div>
         </div>
     );

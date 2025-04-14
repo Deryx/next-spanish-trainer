@@ -4,8 +4,8 @@ import SlideBrickSet from "../ui/SlideBrickSet";
 
 interface WordSliderProps {
     words: Vocabulary[];
-    brickWordsColor?: string;  // Optional props for colors
-    brickTranslationsColor?: string;
+    brickWordsColor: string;
+    brickTranslationsColor: string;
 }
 
 const WordSlider = ({ 
@@ -13,25 +13,27 @@ const WordSlider = ({
     brickWordsColor = "#defaultColor1", 
     brickTranslationsColor = "#defaultColor2" 
 }: WordSliderProps) => {
+    const WORDS: string[] = [];
+    const TRANSLATIONS: string[] = [];
+
+    words.forEach((word) => {
+        WORDS.push(word.getWord());
+        TRANSLATIONS.push(word.getTranslation());
+    });
+    
     return (
         <>
             <div>
-                {words.map((vocab) => (
-                    <SlideBrickSet 
-                        key={`word-${vocab.word}`} 
-                        brickSetColor={brickWordsColor} 
-                        brickSetText={vocab.word} 
-                    />
-                ))}
+                <SlideBrickSet 
+                    brickSetColor={brickWordsColor} 
+                    brickSetText={WORDS} 
+                />
             </div>
             <div>
-                {words.map((vocab) => (
-                    <SlideBrickSet 
-                        key={`translation-${vocab.translation}`} 
-                        brickSetColor={brickTranslationsColor} 
-                        brickSetText={vocab.translation} 
-                    />
-                ))}
+                <SlideBrickSet 
+                    brickSetColor={brickTranslationsColor} 
+                    brickSetText={TRANSLATIONS}
+                />
             </div>
         </>
     );
